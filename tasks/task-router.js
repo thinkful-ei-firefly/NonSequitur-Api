@@ -18,3 +18,24 @@ taskRouter
 .get((req,res) => {
     res.json(TaskService.serializeTask(res.thing))
 })
+
+async function checkTaskExists(req, res, next) {
+    try {
+        const task = await TaskServices.getbyID(
+            req.app.get('db'),
+            req.params.task_id
+        )
+
+        if(!task)
+        return res.status(404).json({
+            error: `Thing doesn't exist`
+        })
+
+        res.thing = thing
+        next()
+    } catch(error) {
+        next(error)
+    }
+}
+
+module.exports = taskRouter
