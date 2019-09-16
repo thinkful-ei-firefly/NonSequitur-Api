@@ -4,16 +4,17 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
+const taskRouter = require('./tasks/task-router')
 
 const app = express()
 
-const morganOption = (NODE_ENV === 'production')
-  ? 'tiny'
-  : 'common';
-
-app.use(morgan(morganOption))
+app.use(morgan((NODE_ENV === 'production') ? 'tiny': 'common', {
+  skip: () => NODE_ENV === 'test',
+}))
+app.use('/test.API', testAPIRouter);
 app.use(helmet())
 app.use(cors())
+app.use('/api/tasks', taskRouter)
 app.get('/', (req, res) => {
     res.send('') //send back array of strings from data base to Task.js Comp. KNEX
 })

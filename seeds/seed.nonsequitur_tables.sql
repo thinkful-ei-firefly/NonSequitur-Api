@@ -15,6 +15,8 @@ VALUES
 ('Download and play every single ad you get for games'),
 ('Watch every video recommended to you on Youtube'),
 ('TIP: if you are not a smoker and want to take smoke breaks, buy a sparkler and hold it like a cigarette.'),
-('Peel and onion and let the tears flow');
+('Peel and onion and let the tears flow'),
+('Drink a glass of milk upsidedown'),
+('Remember to drink your daily intake of LaCroix');
 
 COMMIT;
