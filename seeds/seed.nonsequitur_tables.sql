@@ -1,9 +1,7 @@
-BEGIN;
-
-INSERT INTO nonsequitur (text)
+INSERT INTO nonsequitur (content)
 VALUES
 ('Sing the national anthem over your least favorite politician debate reel. '),
-('Run backwards while yodelling, because Beyonce swears by it. '),
+('Run backwards while yodelling, because Beyonce swears by it.'),
 ('Drink a shot of pickle juice. This is helpful for cleaning your tongue.'),
 ('Walk your neighbor"s dog, while they watch'),
 ('Enjoy a refreshing glass of CO2 '),
@@ -18,5 +16,3 @@ VALUES
 ('Peel and onion and let the tears flow'),
 ('Drink a glass of milk upsidedown'),
 ('Remember to drink your daily intake of LaCroix');
-
-COMMIT;

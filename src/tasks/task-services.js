@@ -1,5 +1,5 @@
  const xss = require('xss')
- const Treeize = require('treeizie')
+ const Treeize = require('treeize')
 
 const TaskSerive = {
     getAllTasks(db) {

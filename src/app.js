@@ -1,32 +1,18 @@
-require('dotenv').config()
 const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
-const helmet = require('helmet')
-const { NODE_ENV } = require('./config')
-const taskRouter = require('./tasks/task-router')
+const bodyParser = require('body-parser');
 
 const app = express()
+const port = 3000
 
-app.use(morgan((NODE_ENV === 'production') ? 'tiny': 'common', {
-  skip: () => NODE_ENV === 'test',
-}))
-app.use(helmet())
-app.use(cors())
-app.use('/api/tasks', taskRouter)
-app.get('/', (req, res) => {
-    res.send('') //send back array of strings from data base to Task.js Comp. KNEX
-})
- app.use(function errorHandler(error, req, res, next) {
-       let response
-       if (NODE_ENV === 'production') {
-        console.error(error)
-         response = { error: { message: 'server error' } }
-       } else {
-         console.error(error)
-         response = { message: error.message, error }
-     }
-     res.status(500).json(response)
-    })
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-module.exports = app
+const data = {
+  item1: 'silly task 1',
+  item2: 'silly task 2',
+  item3: 'silly task 3',
+  item4: 'silly task 4'
+}
+app.get('/express_backend', (req, res) => res.send(data))
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
