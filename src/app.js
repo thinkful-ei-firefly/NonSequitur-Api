@@ -1,18 +1,12 @@
 const express = require('express')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
+
 
 const app = express()
-const port = 3000
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-const data = {
-  item1: 'silly task 1',
-  item2: 'silly task 2',
-  item3: 'silly task 3',
-  item4: 'silly task 4'
-}
-app.get('/express_backend', (req, res) => res.send(data))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+module.exports = app
